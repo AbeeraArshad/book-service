@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BookRepository implements IBookRepository<Book>{
+public class BookRepository implements IBookRepository<Book> {
     private Map<Integer, Book> repository;
 
     public BookRepository() {
@@ -15,13 +15,30 @@ public class BookRepository implements IBookRepository<Book>{
     }
 
     @Override
-    public void save(Book book){
+    public void save(Book book) {
         repository.put(book.getId(), book);
     }
 
     @Override
-    public Collection<Book> getAllBooks(){
+    public Collection<Book> getAllBooks() {
         return repository.values();
     }
-    
+
+    @Override
+    public Book getById(int id) {
+        return repository.get(id);
+    }
+
+    @Override
+    public String deleteBook(int id) {
+        repository.remove(id);
+        return "book deleted";
+    }
+
+    @Override
+    public String updateBook1(int id) {
+        repository.put(id);
+        return "book updated";
+    }
+
 }
