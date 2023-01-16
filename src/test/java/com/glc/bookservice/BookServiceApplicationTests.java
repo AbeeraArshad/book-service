@@ -103,11 +103,12 @@ class BookServiceApplicationTests {
 
 	}
      //AC5: When I click the checkbox next to a book, and then press the "Update" button the application will allow me to update any information of the book.
+	@Test
 	 public void canUpdateTheBook() throws Exception{
 
 		Book book1 = new Book(1, "The Hobbit", "J.R.R. Tolkein", 1937, 320);
-		when(bookRepository.updateBook1(1)).thenReturn("book updated");
-		mvc.perform(put("/book1")
+		when(bookRepository.updateBook(1,book1)).thenReturn("Book Updated");
+		mvc.perform(post("/books/1")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
 			.andExpect(content().string("book successfully updated"));

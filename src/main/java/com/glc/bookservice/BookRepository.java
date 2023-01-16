@@ -36,9 +36,14 @@ public class BookRepository implements IBookRepository<Book> {
     }
 
     @Override
-    public String updateBook1(int id) {
-        repository.put(id);
-        return "book updated";
+    public String updateBook(int id, Book book) {
+        // TODO Auto-generated method stub
+        this.repository.put(id,book);
+        return "Book Updated";
     }
+
+    
+
+    
 
 }
